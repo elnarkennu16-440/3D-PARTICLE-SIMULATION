@@ -1,17 +1,14 @@
-# AR 3D Particle Dust Simulation
+# AR 3D Particle Dust Simulation (Python Engine)
 
-An interactive, real-time gesture-controlled 3D particle physics simulation powered by MediaPipe hand tracking. Particles morph smoothly between 11 intricate 3D models and sculptures based on your hand signs.
+An interactive, real-time gesture-controlled 3D particle physics simulation powered by OpenCV, MediaPipe Hands, Pygame, and OpenGL. Thousands of glowing stardust particles morph smoothly between 11 volumetric 3D sculptures based on hand gestures detected from your webcam.
 
-![Python & Web AR Simulation](public/banner.png)
+## ✨ Core Features
 
-## ✨ Features
-
-- **Gesture-Controlled Morphing**: Control 11 volumetric 3D particle shapes using only your webcam and hand gestures.
-- **Physics Engine**: Smooth spring physics, velocity damping, turbulent drift, and 3D depth sorting.
+- **Gesture-Controlled 3D Morphing**: Control 11 volumetric 3D particle shapes using only your webcam and hand gestures.
+- **Pure Particle Physics**: Real-time spring physics, velocity damping, turbulent drift, and 3D depth sorting with zero bounding boxes or debug wireframes.
 - **6-DOF Hand Interaction**: Real-time hand translation, pitch, roll, and distance rotate and influence the 3D particle field.
-- **Dual Architecture**:
-  - **Desktop Engine**: High-performance Python with OpenCV, Pygame, and NumPy.
-  - **Web Engine**: React + TypeScript + HTML5 Canvas & WebGL with in-browser MediaPipe.
+- **Zero-Latency Inset PIP**: Clean webcam feed in the top-right corner with hand skeleton tracking overlaid inside the PIP and an active gesture recognition HUD banner.
+- **Pre-Baked 3D Assets**: `build_assets.py` prepares Euclidean 3D point clouds and saves to `assets/models_3d.npz` with automatic fallback to embedded mathematical sculptures.
 
 ---
 
@@ -33,52 +30,69 @@ An interactive, real-time gesture-controlled 3D particle physics simulation powe
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Quick Start (Python)
 
-### Option 1: Run the Desktop Python Engine
+### 1. Set Up Environment
+```bash
+# Clone the repository
+git clone https://github.com/elnarkennu16-440/3D-PARTICLE-SIMULATION.git
+cd 3D-PARTICLE-SIMULATION
 
-1. **Activate your Python environment** (or create one):
-   ```bash
-   python -m venv venv
-   # Windows PowerShell:
-   .\venv\Scripts\Activate.ps1
-   ```
+# Create & activate a Python virtual environment
+python -m venv venv
 
-2. **Install dependencies**:
-   ```bash
-   pip install opencv-python mediapipe pygame numpy
-   ```
+# On Windows (PowerShell):
+.\venv\Scripts\Activate.ps1
+# On Linux / macOS:
+source venv/bin/activate
+```
 
-3. **Run the simulation**:
-   ```bash
-   python main.py
-   ```
-   *Keyboard shortcuts in Python app*:
-   - `0` - `9`: Manual shape selection
-   - `C` or `S`: Cobra Snake
-   - `P`: Toggle Picture-in-Picture webcam
-   - `B`: Toggle bloom lighting
-   - `Q`: Quit
+### 2. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+*(Or install directly: `pip install pygame PyOpenGL PyOpenGL_accelerate opencv-python mediapipe numpy`)*
+
+### 3. Run the Simulation
+```bash
+python main.py
+```
+
+### 4. (Optional) Bake 3D Assets
+To re-generate or bake new 3D models into `assets/models_3d.npz`:
+```bash
+python build_assets.py
+```
+
+---
+
+## ⌨️ Controls & Shortcuts
+
+| Key | Action |
+| :--- | :--- |
+| `0` - `9` | Manually select morph shape |
+| `C` or `S` | Morph to King Cobra Snake |
+| `P` | Toggle Picture-in-Picture webcam feed |
+| `B` | Toggle bloom lighting effect |
+| `Q` or `ESC` | Quit simulation |
 
 ---
 
-### Option 2: Run the Web Application
+## 📁 Project Structure
 
-1. **Install Node.js dependencies**:
-   ```bash
-   npm install
-   ```
-
-2. **Start the local dev server**:
-   ```bash
-   npm run dev
-   ```
-
-3. Open [http://localhost:3000](http://localhost:3000) in your browser and allow camera access.
-
----
+```text
+├── main.py              # Main real-time Pygame + OpenGL + MediaPipe simulation
+├── build_assets.py      # Asset generator and 3D point cloud baker
+├── requirements.txt     # Python package requirements
+├── assets/              # Stored 3D models (.npz) and textures
+└── README.md            # Documentation and gesture reference
+```
 
 ## 🛠️ Tech Stack
 
-- **Python Desktop**: Python 3.10+, Pygame, OpenCV, MediaPipe, NumPy
-- **Web App**: TypeScript, React 18, Vite, Tailwind CSS, MediaPipe Hands, Lucide Icons
+- **Python 3.9 - 3.11**
+- **MediaPipe Hands** (Real-time 21-landmark hand gesture recognition)
+- **OpenCV** (Webcam capture and frame preprocessing)
+- **Pygame & PyOpenGL** (60 FPS particle rendering and window management)
+- **NumPy** (Vectorized spring physics, 3D rotations, and vertex transforms)
+
