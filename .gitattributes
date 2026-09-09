@@ -1,10 +1,14 @@
-# Treat all TypeScript and JavaScript files as documentation/vendored so GitHub Linguist marks the repo as 100% Python
-*.ts linguist-documentation
-*.tsx linguist-documentation
-*.js linguist-documentation
-*.mjs linguist-documentation
-*.cjs linguist-documentation
-*.json linguist-documentation
-*.html linguist-documentation
-*.css linguist-documentation
-src/** linguist-documentation
+*.ts linguist-detectable=false
+*.tsx linguist-detectable=false
+*.js linguist-detectable=false
+*.json linguist-detectable=false
+*.html linguist-detectable=false
+*.css linguist-detectable=false
+*.lock linguist-detectable=false
+src/** linguist-detectable=false
+
+*.ts linguist-vendored
+*.tsx linguist-vendored
+src/** linguist-vendored
+
+*.py linguist-detectable=true
