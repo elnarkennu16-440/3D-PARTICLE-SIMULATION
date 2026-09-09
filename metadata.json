@@ -1,0 +1,10 @@
+{
+  "name": "AR 3D Particle Dust Simulation",
+  "description": "High-performance 3D Particle Dust Simulation with hardware-accelerated PyOpenGL rendering, MediaPipe hand tracking, and 10 reference-accurate 3D parametric shapes.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
